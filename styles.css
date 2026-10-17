@@ -1,0 +1,342 @@
+/* ===== Tokens (repris de la palette de l'app SomSom) ===== */
+:root {
+  --sky-top: #0B1230;
+  --sky-mid: #15297A;
+  --sky-horizon: #2E6BD6;
+  --cloud-white: #FFFFFF;
+  --text-primary: #F3F6FF;
+  --text-secondary: #B9C6E8;
+  --accent-pink: #FF8FD6;
+  --accent-blue: #5FB0F2;
+  --surface: rgba(8, 14, 32, 0.62);
+  --surface-border: rgba(255, 255, 255, 0.16);
+  --card-bg: #FFFFFF;
+  --card-text: #1B2236;
+  --card-text-dim: #5B6786;
+  --card-border: #E2E8F5;
+  --radius-lg: 28px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --max-width: 1080px;
+  --font-display: "Baloo 2", "Fredoka", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--sky-top);
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== Ciel animé de fond ===== */
+/* Dégradé confiné à la zone du hero (pas `fixed` plein écran) : au-delà de
+   la hauteur de la fenêtre au chargement, un fond fixe laisse apparaître un
+   raccord net avec le `background` plat du body plus bas dans la page. Le
+   dégradé revient volontairement à --sky-top en bas, pour se fondre dans le
+   corps de page sans transition visible. */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 760px;
+  z-index: -2;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-top) 100%);
+  pointer-events: none;
+}
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 760px;
+  z-index: -1;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #FFE9A8;
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.9; transform: scale(1.15); }
+}
+.drift-cloud {
+  position: absolute;
+  opacity: 0.9;
+  animation: drift 26s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
+}
+@keyframes drift {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(22px) translateY(-14px); }
+}
+
+/* ===== Nav ===== */
+header.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: rgba(11, 18, 48, 0.72);
+  border-bottom: 1px solid var(--surface-border);
+}
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.brand img { width: 30px; height: 30px; }
+nav.links {
+  display: flex;
+  gap: 28px;
+}
+nav.links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+nav.links a:hover, nav.links a.active { color: var(--text-primary); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 22px;
+  cursor: pointer;
+}
+@media (max-width: 720px) {
+  nav.links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--sky-top);
+    border-bottom: 1px solid var(--surface-border);
+    flex-direction: column;
+    padding: 18px 24px 24px;
+    gap: 16px;
+    display: none;
+  }
+  nav.links.open { display: flex; }
+  .nav-toggle { display: block; }
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 90px 24px 60px;
+  text-align: center;
+  position: relative;
+}
+.hero img.mascot {
+  width: min(380px, 80vw);
+  margin: 0 auto 8px;
+  animation: float 5s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 10px 0 14px;
+  text-wrap: balance;
+}
+.hero p.lede {
+  color: var(--text-secondary);
+  font-size: 17px;
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+.store-badges {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  opacity: 0.75;
+}
+.store-badge .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent-pink);
+}
+
+/* ===== Features ===== */
+.features {
+  padding: 50px 24px 90px;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  /* Visible par défaut (pas de JS, JS cassé, capture automatisée qui ne
+     déclenche jamais de scroll réel) : l'animation d'entrée est un bonus
+     ajouté par `.js`, jamais une condition pour que le contenu existe. */
+  opacity: 1;
+  transform: none;
+}
+.js .feature-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js .feature-card.visible { opacity: 1; transform: translateY(0); }
+.feature-card .emoji { font-size: 30px; margin-bottom: 14px; }
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== Section générique (pages légales) ===== */
+.legal-page main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 24px 100px;
+}
+.legal-page .doc-card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  border-radius: var(--radius-lg);
+  padding: 40px clamp(20px, 5vw, 48px);
+}
+.legal-page h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  margin: 0 0 6px;
+}
+.legal-page .updated {
+  color: var(--card-text-dim);
+  font-size: 13px;
+  margin-bottom: 36px;
+}
+.legal-page h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 32px 0 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--card-border);
+}
+.legal-page h2:first-of-type { border-top: none; padding-top: 0; }
+.legal-page p, .legal-page li {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 65ch;
+}
+.legal-page ul { padding-left: 22px; }
+.legal-page table { border-collapse: collapse; width: 100%; margin: 4px 0 20px; font-size: 13.5px; }
+.legal-page th, .legal-page td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
+.legal-page th { color: var(--card-text-dim); font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; }
+.legal-page a.inline { color: var(--sky-horizon); text-decoration: underline; }
+.legal-page .contact-box {
+  margin-top: 40px;
+  padding: 18px 20px;
+  background: #E8F0FE;
+  border-radius: 14px;
+  font-size: 14px;
+}
+.legal-page .contact-box a { color: var(--sky-horizon); font-weight: 700; text-decoration: none; }
+.legal-page .notice {
+  background: #FFF4E5;
+  border: 1px solid #F3D9A8;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  color: #6B4E16;
+  margin-bottom: 28px;
+}
+
+/* ===== Footer ===== */
+footer {
+  border-top: 1px solid var(--surface-border);
+  padding: 32px 24px 48px;
+  text-align: center;
+}
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .foot-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+}
+footer a:hover { color: var(--text-primary); }
+footer .copy {
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star, .drift-cloud, .hero img.mascot, .feature-card { animation: none !important; transition: none !important; }
+}
