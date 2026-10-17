@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SomSom — Rêvez, partagez, rapprochez-vous</title>
 <meta name="description" content="SomSom est une application sociale pour partager vos rêves, votre statut de sommeil et rester proche de vos amis, dans leur langue.">
-<link rel="icon" href="assets/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0B1230">
 <link rel="canonical" href="https://dataeasy01.github.io/somsom-site/">
 <meta property="og:title" content="SomSom">
 <meta property="og:description" content="Rêvez. Partagez. Rapprochez-vous.">
@@ -51,6 +55,15 @@
       <span class="store-badge"><span class="dot"></span> Bientôt sur l'App Store</span>
       <span class="store-badge"><span class="dot"></span> Bientôt sur Google Play</span>
     </div>
+
+    <form id="waitlist-form" class="waitlist" action="merci.html" novalidate>
+      <p class="waitlist-label">Sois prévenu·e dès la sortie :</p>
+      <div class="waitlist-row">
+        <input type="email" name="email" id="waitlist-email" placeholder="ton@email.com" required autocomplete="email">
+        <button type="submit" id="waitlist-submit">M'avertir</button>
+      </div>
+      <p class="waitlist-msg" id="waitlist-msg" role="status" aria-live="polite"></p>
+    </form>
   </section>
 
   <section class="features">
@@ -92,6 +105,11 @@
   </div>
 </footer>
 
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#waitlist-form">Prévenez-moi au lancement →</a>
+</div>
+
 <script src="main.js"></script>
+<script src="waitlist.js"></script>
 </body>
 </html>

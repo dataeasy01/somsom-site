@@ -208,6 +208,88 @@ nav.links a:hover, nav.links a.active { color: var(--text-primary); }
   background: var(--accent-pink);
 }
 
+/* ===== Liste d'attente ===== */
+.waitlist {
+  margin: 36px auto 0;
+  max-width: 420px;
+}
+.waitlist-label {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+.waitlist-row {
+  display: flex;
+  gap: 8px;
+}
+.waitlist-row input {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  padding: 13px 18px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-body);
+}
+.waitlist-row input::placeholder { color: var(--text-secondary); opacity: 0.7; }
+.waitlist-row input:focus { outline: 2px solid var(--accent-blue); outline-offset: 1px; }
+.waitlist-row button {
+  background: var(--accent-blue);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0 20px;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.waitlist-row button:disabled { opacity: 0.6; cursor: default; }
+.waitlist-msg {
+  min-height: 18px;
+  font-size: 12.5px;
+  margin: 10px 0 0;
+  color: var(--text-secondary);
+}
+.waitlist-msg.error { color: #FFB4B4; }
+.waitlist-msg.success { color: #9FE8B0; }
+@media (max-width: 420px) {
+  .waitlist-row { flex-direction: column; }
+}
+
+/* ===== CTA sticky mobile ===== */
+.sticky-cta {
+  display: none;
+}
+@media (max-width: 720px) {
+  .sticky-cta {
+    display: block;
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 30;
+    background: var(--accent-blue);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    text-align: center;
+    transform: translateY(120%);
+    transition: transform 0.3s ease;
+  }
+  .sticky-cta.visible { transform: translateY(0); }
+  .sticky-cta a {
+    display: block;
+    padding: 14px 18px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
+
 /* ===== Features ===== */
 .features {
   padding: 50px 24px 90px;
