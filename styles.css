@@ -118,7 +118,6 @@ header.nav {
   text-decoration: none;
   color: var(--text-primary);
 }
-.brand img { width: 30px; height: 30px; }
 nav.links {
   display: flex;
   gap: 28px;
