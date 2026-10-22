@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dataeasy01.github.io/somsom-site/sitemap.xml
+Sitemap: https://somsom.fr/sitemap.xml
