@@ -45,7 +45,7 @@
 <main>
   <div class="doc-card">
     <h1>Politique de confidentialité</h1>
-    <div class="updated">Dernière mise à jour : 16 octobre 2026</div>
+    <div class="updated">Dernière mise à jour : 26 octobre 2026</div>
 
     <h2>1. Responsable du traitement</h2>
     <p>SomSom, <a class="inline" href="mailto:contact@somsom.fr">contact@somsom.fr</a>, est responsable du traitement de vos données personnelles collectées dans le cadre de l'utilisation de l'application SomSom.</p>
@@ -61,6 +61,7 @@
       <tr><td>Langue préférée</td><td>Affichage de l'app dans la bonne langue</td></tr>
       <tr><td>Jeton de notification push</td><td>Envoi de notifications (si activées)</td></tr>
       <tr><td>Signalements effectués ou reçus</td><td>Modération du contenu</td></tr>
+      <tr><td>Rapports d'erreur techniques (modèle d'appareil, version du système et de l'app, trace de l'erreur, identifiant technique anonyme)</td><td>Détection et correction des bugs</td></tr>
     </table>
     <p>Nous ne collectons pas votre position géographique précise, ni de données de paiement (l'app n'a pas de fonctionnalité payante à ce jour).</p>
 
@@ -68,13 +69,20 @@
     <p>Le traitement repose sur l'exécution du contrat qui vous lie à nous dès la création de votre compte (fourniture du service), et, pour certains traitements optionnels (notifications push), sur votre consentement.</p>
 
     <h2>4. Destinataires des données</h2>
-    <p>Vos données sont hébergées par Supabase (infrastructure cloud), notre sous-traitant technique, qui agit selon nos instructions. Vos publications et votre profil sont visibles par les autres utilisateurs de SomSom selon vos réglages de confidentialité (public ou amis uniquement). Nous ne vendons ni ne partageons vos données avec des tiers à des fins publicitaires.</p>
+    <p>Nous faisons appel aux sous-traitants techniques suivants, qui agissent uniquement selon nos instructions :</p>
+    <ul>
+      <li><strong>Supabase</strong> : hébergement de la base de données, des comptes et des photos ;</li>
+      <li><strong>Sentry</strong> : réception des rapports d'erreur techniques (sans adresse IP ni contenu publié) ;</li>
+      <li><strong>Expo</strong>, <strong>Apple</strong> (APNs) et <strong>Google</strong> (Firebase Cloud Messaging) : acheminement des notifications push ;</li>
+      <li><strong>Resend</strong> : envoi des e-mails liés au compte (confirmation, réinitialisation du mot de passe).</li>
+    </ul>
+    <p>Vos publications et votre profil sont visibles par les autres utilisateurs de SomSom selon vos réglages de confidentialité (public ou amis uniquement). Nous ne vendons ni ne partageons vos données avec des tiers à des fins publicitaires.</p>
 
     <h2>5. Durée de conservation</h2>
     <p>Vos données sont conservées tant que votre compte est actif. En cas de suppression de compte, vos données personnelles et votre contenu sont supprimés définitivement, à l'exception des informations que nous sommes légalement tenus de conserver plus longtemps (ex. obligations comptables, traitement d'un litige en cours).</p>
 
     <h2>6. Vos droits</h2>
-    <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants sur vos données personnelles : accès, rectification, effacement, limitation, portabilité, opposition. Vous pouvez exercer directement certains de ces droits depuis l'Application (modification du profil, suppression du compte). Pour toute autre demande, contactez-nous à <a class="inline" href="mailto:contact@somsom.fr">contact@somsom.fr</a>. Vous disposez également du droit d'introduire une réclamation auprès de la CNIL (<a class="inline" href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+    <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants sur vos données personnelles : accès, rectification, effacement, limitation, portabilité, opposition. Vous pouvez exercer directement certains de ces droits depuis l'Application (modification du profil, suppression du compte — voir <a class="inline" href="suppression-compte.html">Supprimer son compte</a>). Pour toute autre demande, contactez-nous à <a class="inline" href="mailto:contact@somsom.fr">contact@somsom.fr</a>. Vous disposez également du droit d'introduire une réclamation auprès de la CNIL (<a class="inline" href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
 
     <h2>7. Sécurité</h2>
     <p>Nous mettons en œuvre des mesures techniques raisonnables (chiffrement des échanges, contrôle d'accès par compte) pour protéger vos données contre l'accès non autorisé, la perte ou l'altération.</p>
@@ -86,7 +94,7 @@
     <p>SomSom n'est pas destiné aux personnes de moins de 16 ans. Si nous apprenons qu'un compte a été créé par une personne de moins de 16 ans, nous le supprimerons.</p>
 
     <h2>10. Cookies et traceurs</h2>
-    <p>L'application mobile utilise uniquement un stockage local sur votre appareil (préférences de langue et d'affichage) — aucun traceur publicitaire ou analytique tiers. Détail complet sur notre <a class="inline" href="cookies.html">page Cookies</a>.</p>
+    <p>L'application mobile utilise uniquement un stockage local sur votre appareil (préférences de langue et d'affichage) — aucun traceur publicitaire ni outil de mesure d'audience. Seuls des rapports d'erreur techniques sont envoyés à Sentry en cas de plantage (voir section 4). Détail complet sur notre <a class="inline" href="cookies.html">page Cookies</a>.</p>
 
     <h2>11. Modification de cette politique</h2>
     <p>Nous pouvons modifier cette politique de confidentialité ; toute modification substantielle vous sera notifiée via l'Application.</p>
